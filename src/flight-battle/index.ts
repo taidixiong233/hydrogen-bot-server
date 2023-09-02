@@ -12,7 +12,11 @@ export const flycraft: string[] = [];
 //所有的大炮名字
 export const artillery: string[] = [];
 
-export default async function (app: Express, error: ErrorChild): Promise<void> {
+export default async function (
+  app: Express,
+  error: ErrorChild,
+  BaseUrl: string
+): Promise<void> {
   error.postLog(`开始加载配置文件`);
 
   gameconfig.forEach((v, k) => {
@@ -24,10 +28,10 @@ export default async function (app: Express, error: ErrorChild): Promise<void> {
   });
   if (gameconfig.size === 8) {
     error.postLog("配置文件加载完毕");
-    await Init_help(app, error);
-    await Init_user(app, error);
-    await Init_store(app, error);
-    await Init_game(app, error);
-    await Init_stat(app, error);
+    await Init_help(app, error, BaseUrl);
+    await Init_user(app, error, BaseUrl);
+    await Init_store(app, error, BaseUrl);
+    await Init_game(app, error, BaseUrl);
+    await Init_stat(app, error, BaseUrl);
   }
 }

@@ -14,9 +14,13 @@ import * as mysql from "mysql";
 import parameter, { Aircraft, Artillery } from "../gameconfig";
 import config from "../../config";
 
-export async function Init_game(app: Express, error: ErrorChild) {
+export async function Init_game(
+  app: Express,
+  error: ErrorChild,
+  BaseUrl: string
+) {
   /**pilot takeoff, if user isn't pilot can throw error */
-  app.post("/game_takeoff", async (req, res) => {
+  app.post(`/${BaseUrl}/game_takeoff`, async (req, res) => {
     try {
       await authorization_token(req);
 
@@ -128,7 +132,7 @@ export async function Init_game(app: Express, error: ErrorChild) {
     }
   });
 
-  app.post("/game_landing", async (req, res) => {
+  app.post(`/${BaseUrl}/game_landing`, async (req, res) => {
     try {
       await authorization_token(req);
 
@@ -219,7 +223,7 @@ export async function Init_game(app: Express, error: ErrorChild) {
     }
   });
 
-  app.post("/game_transmit", async (req, res) => {
+  app.post(`/${BaseUrl}/game_transmit`, async (req, res) => {
     try {
       await authorization_token(req);
 

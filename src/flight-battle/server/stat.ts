@@ -5,9 +5,13 @@ import { errorcode } from "../../common/authorization";
 import * as mysql from "mysql";
 import config from "../../config";
 
-export async function Init_stat(app: Express, error: ErrorChild) {
+export async function Init_stat(
+  app: Express,
+  error: ErrorChild,
+  BaseUrl: string
+) {
   /** statistics data*/
-  app.post("/stat", async (req, res) => {
+  app.post(`/${BaseUrl}/stat`, async (req, res) => {
     try {
       await authorization_token(req);
       try {

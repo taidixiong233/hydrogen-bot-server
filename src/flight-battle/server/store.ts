@@ -14,9 +14,13 @@ import parameter from "../gameconfig";
 import * as mysql from "mysql";
 import config from "../../config";
 
-export async function Init_store(app: Express, error: ErrorChild) {
+export async function Init_store(
+  app: Express,
+  error: ErrorChild,
+  BaseUrl: string
+) {
   /**this store YAYAYA */
-  app.post("/store_buy", async (req, res) => {
+  app.post(`/${BaseUrl}/store_buy`, async (req, res) => {
     try {
       await authorization_token(req);
       //begin query
@@ -138,7 +142,7 @@ export async function Init_store(app: Express, error: ErrorChild) {
   });
 
   /**sale things */
-  app.post("/store_sale", async (req, res) => {
+  app.post(`/${BaseUrl}/store_sale`, async (req, res) => {
     try {
       await authorization_token(req);
       //begin query
@@ -220,7 +224,7 @@ export async function Init_store(app: Express, error: ErrorChild) {
   });
 
   /**sale buttle */
-  app.post("/store_buy_buttle", async (req, res) => {
+  app.post(`/${BaseUrl}/store_buy_buttle`, async (req, res) => {
     try {
       await authorization_token(req);
       //begin query
@@ -308,7 +312,7 @@ export async function Init_store(app: Express, error: ErrorChild) {
   });
 
   /**apply flight permit */
-  app.post("/store_buy_flight_permit", async (req, res) => {
+  app.post(`/${BaseUrl}/store_buy_flight_permit`, async (req, res) => {
     try {
       await authorization_token(req);
       //begin query

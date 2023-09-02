@@ -5,12 +5,16 @@ import { authorization_token } from "../../common/authorization";
 import config from "../../config";
 import { errorcode } from "../../common/authorization";
 
-export async function Init_help(app: Express, error: ErrorChild) {
+export async function Init_help(
+  app: Express,
+  error: ErrorChild,
+  BaseUrl: string
+) {
   /**get image of help */
-  app.post("/help", async (req, res) => {
+  app.post(`/${BaseUrl}/help`, async (req, res) => {
     try {
       await authorization_token(req);
-      res.sendFile(path.join(__dirname, "../../assets/帮助.jpg"));
+      res.sendFile(path.join(__dirname, "../../../assets/帮助.jpg"));
     } catch (err) {
       if (err) {
         /**这是jwt认证失败，不理会 */
@@ -33,7 +37,7 @@ export async function Init_help(app: Express, error: ErrorChild) {
   });
 
   /**version */
-  app.post("/version", (_, res) =>
+  app.post(`/${BaseUrl}/version`, (_, res) =>
     res.json({
       version: config.version,
       code: errorcode.success,
