@@ -1,7 +1,7 @@
-import E from "tderrors";
+import ErrorChild from "../../error";
 import { Express } from "express";
-import { authorization_token } from "./common";
-import { errorcode } from "./common";
+import { authorization_token } from "../../common/authorization";
+import { errorcode } from "../../common/authorization";
 import {
   GameUser,
   QueryGameUserData,
@@ -9,12 +9,12 @@ import {
   SettingsGameUserCon,
   SettingsUserCon,
   User,
-} from "./user";
+} from "../../common/user";
 import * as mysql from "mysql";
 import parameter, { Aircraft, Artillery } from "../gameconfig";
-import config from "../config";
+import config from "../../config";
 
-export async function Init_game(app: Express, error: E) {
+export async function Init_game(app: Express, error: ErrorChild) {
   /**pilot takeoff, if user isn't pilot can throw error */
   app.post("/game_takeoff", async (req, res) => {
     try {

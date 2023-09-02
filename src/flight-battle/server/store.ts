@@ -1,7 +1,7 @@
 import { artillery, flycraft } from "..";
-import Error from "tderrors";
+import ErrorChild from "../../error";
 import { Express } from "express";
-import { errorcode, authorization_token } from "./common";
+import { errorcode, authorization_token } from "../../common/authorization";
 import {
   GameUser,
   QueryGameUserData,
@@ -9,12 +9,12 @@ import {
   SettingsGameUserCon,
   SettingsUserCon,
   User,
-} from "./user";
+} from "../../common/user";
 import parameter from "../gameconfig";
 import * as mysql from "mysql";
-import config from "../config";
+import config from "../../config";
 
-export async function Init_store(app: Express, error: Error) {
+export async function Init_store(app: Express, error: ErrorChild) {
   /**this store YAYAYA */
   app.post("/store_buy", async (req, res) => {
     try {

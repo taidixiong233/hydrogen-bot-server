@@ -1,11 +1,11 @@
-import E from "tderrors";
+import ErrorChild from "../../error";
 import { Express } from "express";
-import { authorization_token } from "./common";
-import { errorcode } from "./common";
+import { authorization_token } from "../../common/authorization";
+import { errorcode } from "../../common/authorization";
 import * as mysql from "mysql";
-import config from "../config";
+import config from "../../config";
 
-export async function Init_stat(app: Express, error: E) {
+export async function Init_stat(app: Express, error: ErrorChild) {
   /** statistics data*/
   app.post("/stat", async (req, res) => {
     try {

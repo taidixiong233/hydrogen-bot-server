@@ -30,7 +30,7 @@
     "jsonwebtoken": "^9.0.1",
     "mysql": "^2.18.1",
     "speakeasy": "^2.0.0",
-    "tderrors": "^0.0.7",
+    "tderrors": "^0.0.8",
     "typescript": "^5.1.6"
   }
 }
