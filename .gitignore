@@ -1,0 +1,6 @@
+# 项目排除路径
+/.vscode
+/dist
+/node_modules
+/logs
+src/config.ts
