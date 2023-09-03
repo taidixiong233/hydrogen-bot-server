@@ -4,3 +4,4 @@
 /dist/*
 # 日志目录
 /logs/*
+/src/server/finking/assets/*

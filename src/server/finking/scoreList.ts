@@ -13,8 +13,8 @@ export async function GetScoreFinkingPng(data: User[]): Promise<Buffer> {
     
         <link rel="stylesheet" href="../assets/index.css" />
         <!-- Import Vue3 -->
-        <!-- <script src="assets/vue.global.prod.js"></script> -->
-        <script src="../assets/vue.global.js"></script>
+        <script src="../assets/vue.global.prod.js"></script>
+        <!-- <script src="../assets/vue.global.js"></script> -->
         <!-- Import component library -->
     
         <script src="../assets/index.full.js"></script>
