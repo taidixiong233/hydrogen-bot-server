@@ -1,5 +1,4 @@
 import { GetScoreFinkingPng } from "./scoreList";
-import * as fs from "fs";
 
 import Error from "tderrors";
 import { Express } from "express";
@@ -7,7 +6,6 @@ import { errorcode } from "../../common/authorization";
 import ErrorChild from "../../error";
 import { authorization_token } from "../../common/authorization";
 import { QuerySomeUserData } from "../../common/user";
-import { join } from "path";
 
 export default async function Init_Fink(
   app: Express,
@@ -20,18 +18,11 @@ export default async function Init_Fink(
       await authorization_token(req);
       const data = await QuerySomeUserData();
       const image = await GetScoreFinkingPng(data);
-      if (!fs.existsSync(join(__dirname, "./tmp"))) {
-        fs.mkdirSync(join(__dirname, "./tmp"));
-      }
 
-      const time = new Date().getTime();
-      fs.writeFileSync(join(__dirname, "./tmp", `${time}.png`), image);
-
-      res.sendFile(join(__dirname, "./tmp", `${time}.png`));
-
-      return setTimeout(() => {
-        fs.unlinkSync(join(__dirname, "./tmp", `${time}.png`));
-      }, 2000);
+      return res.json({
+        status: 'ok',
+        data: image.toString('base64')
+      })
     } catch (err) {
       if (err && String(err) != "JsonWebTokenError: invalid token") {
         //unknown error

@@ -27,6 +27,10 @@ export async function Init_user(
     res.redirect(307, `${req.baseUrl}/score_finking`);
   });
 
+  app.post(`/${BaseUrl}/login`, (req, res) => {
+    res.redirect(307, `${req.baseUrl}/login`);
+  });
+
   /**create new user's game data in a datatable named game_user_a
    * if user don't hava data that it in data table named user, isn't automatically create data and throw error
    */

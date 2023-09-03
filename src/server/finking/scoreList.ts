@@ -11,13 +11,13 @@ export async function GetScoreFinkingPng(data: User[]): Promise<Buffer> {
       <head>
         <!-- Import style -->
     
-        <link rel="stylesheet" href="../assets/index.css" />
+        <link rel="stylesheet" href="../../../../assets/index.css" />
         <!-- Import Vue3 -->
-        <script src="../assets/vue.global.prod.js"></script>
-        <!-- <script src="../assets/vue.global.js"></script> -->
+        <script src="../../../../assets/vue.global.prod.js"></script>
+        <!-- <script src="../../../../assets/vue.global.js"></script> -->
         <!-- Import component library -->
     
-        <script src="../assets/index.full.js"></script>
+        <script src="../../../../assets/index.full.js"></script>
         <script>
           const user_score_data = ${JSON.stringify(data)};
         </script>
@@ -89,7 +89,7 @@ export async function GetScoreFinkingPng(data: User[]): Promise<Buffer> {
     const page = await browser.newPage();
     // 设置tab页的尺寸，puppeteer允许对每个tab页单独设置尺寸
     await page.setViewport({
-      width: 360,
+      width: 370,
       height: 330,
     });
 
@@ -107,9 +107,11 @@ export async function GetScoreFinkingPng(data: User[]): Promise<Buffer> {
     browser.close();
 
     ret = fs.readFileSync(path.join(__dirname, "./tmp", `./${time}.png`));
+    setTimeout(() => {
+      fs.unlinkSync(path.join(__dirname, "./tmp", `./${time}.html`));
+      fs.unlinkSync(path.join(__dirname, "./tmp", `./${time}.png`));
+    }, 2000);
 
-    fs.unlinkSync(path.join(__dirname, "./tmp", `./${time}.html`));
-    fs.unlinkSync(path.join(__dirname, "./tmp", `./${time}.png`));
     return new Promise((res) => res(ret));
   } catch (err) {
     console.log(err);
