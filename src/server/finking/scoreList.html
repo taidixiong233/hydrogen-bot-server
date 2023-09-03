@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Import style -->
+
+    <link rel="stylesheet" href="assets/index.css" />
+    <!-- Import Vue3 -->
+    <!-- <script src="assets/vue.global.prod.js"></script> -->
+    <script src="assets/vue.global.js"></script>
+    <!-- Import component library -->
+
+    <script src="assets/index.full.js"></script>
+    <script>
+      const user_score_data = [
+        {
+          QQid: 2870926164,
+          score: 123456,
+          sign_Date: "",
+          dayN: 455,
+          ban: 20,
+        },
+        {
+          QQid: 2870926164,
+          score: 123456,
+          sign_Date: "",
+          dayN: 455,
+          ban: 20,
+        },
+        {
+          QQid: 2870926164,
+          score: 123456,
+          sign_Date: "",
+          dayN: 455,
+          ban: 20,
+        },
+        {
+          QQid: 2870926164,
+          score: 123456,
+          sign_Date: "",
+          dayN: 455,
+          ban: 20,
+        },
+        {
+          QQid: 2870926164,
+          score: 123456,
+          sign_Date: "",
+          dayN: 455,
+          ban: 20,
+        },
+      ];
+    </script>
+  </head>
+  <body>
+    <div id="app" style="width: 360px">
+      <div style="text-align: center">
+        <el-text>积分排行</el-text>
+      </div>
+      <el-table :data="score_data" stripe style="width: 360px">
+        <el-table-column type="index" width="60" label="排名"></el-table-column>
+        <el-table-column prop="QQid" width="120" label="QQ号"></el-table-column>
+        <el-table-column
+          prop="score"
+          width="100"
+          label="积分数量"
+        ></el-table-column>
+        <el-table-column
+          prop="dayN"
+          width="80"
+          label="签到天数"
+        ></el-table-column>
+      </el-table>
+
+      <div style="text-align: center">
+        <el-text>数据统计时间: {{ time() }}</el-text><br />
+        <el-text>氢气机器人版权所有</el-text>
+      </div>
+    </div>
+  </body>
+  <script>
+    const { createApp, ref } = Vue;
+    const app = createApp({
+      data() {
+        return {
+          score_data: ref(user_score_data),
+        };
+      },
+      methods: {
+        time() {
+          const time = new Date();
+          return `${time.getFullYear()}-${
+            time.getMonth() + 1
+          }-${time.getDate()}T${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
+        },
+      },
+    });
+    app.use(ElementPlus);
+    app.mount("#app");
+  </script>
+</html>

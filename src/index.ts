@@ -22,9 +22,11 @@ error.once("http服务器启动成功", () => {
 import Init_Login from "./server/login";
 import Init_FlightBattle from "./flight-battle";
 import Init_User from './server/user'
+import Init_Fink from "./server/finking/finking";
 
 error.once("开始加载服务", async () => {
   await Init_Login(app, new ErrorChild(error, "Login"));
   await Init_User(app, new ErrorChild(error, "User"));
   await Init_FlightBattle(app, new ErrorChild(error, "飞机大作战"), 'FlightBattle');
+  await Init_Fink(app, new ErrorChild(error, "Finking"))
 });
