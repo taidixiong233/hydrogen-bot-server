@@ -94,7 +94,8 @@ export async function GetScoreFinkingPng(data: User[]): Promise<Buffer> {
     });
 
     // tab访问需要截图的页面，使用await可以等待页面加载完毕
-    await page.goto(path.join(__dirname, "./tmp", `./${time}.html`), {
+    const filepath = path.join(__dirname, "./tmp", `./${time}.html`);
+    await page.goto(`file:///${filepath}`, {
       waitUntil: "networkidle0",
     });
 
