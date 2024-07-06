@@ -11,7 +11,7 @@
     "fix": "eslint src --fix",
     "build": "npm run lint && tsc"
   },
-  "author": "taidixiong233",
+  "author": "github.com/taidixiong233",
   "license": "Apache License 2.0",
   "devDependencies": {
     "@types/mysql": "^2.15.21",
